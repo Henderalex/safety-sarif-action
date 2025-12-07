@@ -1,0 +1,8 @@
+[
+  {
+    "package_name": "requests",
+    "installed_version": "2.31.0",
+    "vuln_id": "GHSA-xxxx",
+    "advisory": "Example advisory text explaining the vulnerability"
+  }
+]

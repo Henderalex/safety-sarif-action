@@ -1,2 +1,13 @@
-# safety-sarif-action
-Coverts Safety output to SARIF format
+# Your Tool → SARIF
+
+Small converter that turns Safety JSON output into a minimal SARIF 2.1.0 file suitable for GitHub Code Scanning.
+
+Usage:
+
+```
+python3 converter.py --input safety-output.json --output result.sarif
+```
+
+If the input contains no findings, an empty SARIF with zero results is produced.
+
+This repository is intentionally minimal and designed as a starting point.
