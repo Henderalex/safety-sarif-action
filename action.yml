@@ -11,7 +11,7 @@ inputs:
     required: false
     default: 'output.sarif'
   tool:
-    description: 'Tool name (currently supported: safety).'
+    description: 'safety'
     required: false
     default: 'safety'
 outputs:
