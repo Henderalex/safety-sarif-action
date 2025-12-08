@@ -1,4 +1,4 @@
-name: 'Your Tool → SARIF'
+name: 'Safety → SARIF'
 description: 'Convert a security tool output (Safety) into SARIF format.'
 author: 'Henderalex'
 inputs:
