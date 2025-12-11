@@ -1,0 +1,13 @@
+{
+  "vulnerabilities": [
+    {
+      "package_name": "requests",
+      "installed_version": "2.19.0",
+      "vuln_id": "GHSA-XXXX",
+      "advisory": "Example advisory text explaining the vulnerability",
+      "severity": "high",
+      "cve": "CVE-2020-XXXX",
+      "cvss_score": 7.5
+    }
+  ]
+}

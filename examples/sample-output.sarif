@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "safety",
+          "informationUri": "https://github.com/pyupio/safety",
+          "rules": [
+            {
+              "id": "GHSA-XXXX",
+              "name": "requests",
+              "shortDescription": {
+                "text": "Example advisory text explaining the vulnerability"
+              },
+              "fullDescription": {
+                "text": "Example advisory text explaining the vulnerability"
+              },
+              "help": {
+                "text": "Example advisory text explaining the vulnerability"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "dependency"
+                ],
+                "precision": "high",
+                "security-severity": "7.5",
+                "cve": "CVE-2020-XXXX"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "GHSA-XXXX",
+          "level": "error",
+          "message": {
+            "text": "requests 2.19.0: Example advisory text explaining the vulnerability"
+          },
+          "locations": [],
+          "properties": {
+            "package": "requests",
+            "version": "2.19.0",
+            "tool": "safety"
+          }
+        }
+      ]
+    }
+  ]
+}
