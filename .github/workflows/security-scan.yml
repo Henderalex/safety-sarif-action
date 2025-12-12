@@ -25,14 +25,14 @@ jobs:
       - name: Install Safety
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade safety
+          python -m pip install "safety==2.3.5"
 
       - name: Run Safety (JSON)
         run: |
           set -eo pipefail
           echo "Python:" $(python -V)
           safety --version
-          safety scan --output json --continue-on-error --no-input > safety-output.json
+          safety check --file requirements.txt --json > safety-output.json
 
       - name: Convert Safety output to SARIF
         uses: ./
