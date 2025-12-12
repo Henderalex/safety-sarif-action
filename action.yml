@@ -1,36 +1,25 @@
-name: 'Safety → SARIF'
-description: 'Convert a security tool output (Safety) into SARIF format.'
-author: 'Henderalex'
+name: "Safety SARIF Converter"
+description: "Converts Safety JSON output to SARIF format"
 inputs:
   input_file:
-    description: 'Path to the tool output file (JSON or plain text).'
+    description: "Input JSON file from Safety"
     required: true
-    default: 'example-safety.json'
   output_file:
-    description: 'Path where the generated SARIF JSON will be written.'
-    required: false
-    default: 'output.sarif'
+    description: "Output SARIF file"
+    required: true
+  manifest:
+    description: "Path to manifest file"
+    required: true
   tool:
-    description: 'safety'
-    required: false
-    default: 'safety'
-outputs:
-  sarif_file:
-    description: 'Path to the generated SARIF file.'
-  findings_count:
-    description: 'Number of findings included in the SARIF.'
-
+    description: "Tool name (e.g., safety)"
+    required: true
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: Run converter
+    - run: |
+        python3 converter.py \
+          --input ${{ inputs.input_file }} \
+          --output ${{ inputs.output_file }} \
+          --manifest ${{ inputs.manifest }} \
+          --tool ${{ inputs.tool }}
       shell: bash
-      run: |
-        if ! command -v python3 >/dev/null 2>&1 && ! command -v python >/dev/null 2>&1; then
-          echo "Python is required on the runner." >&2
-          exit 2
-        fi
-        PY=python3
-        command -v python3 >/dev/null 2>&1 || PY=python
-        $PY ./converter.py --input "${{ inputs.input_file }}" --output "${{ inputs.output_file }}" --tool "${{ inputs.tool }}"
-        echo "sarif_file=${{ inputs.output_file }}" >> $GITHUB_OUTPUT
