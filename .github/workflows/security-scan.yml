@@ -29,11 +29,13 @@ jobs:
 
       - name: Run Safety (JSON)
         run: |
-          set -eo pipefail
+          set -o pipefail
           echo "Python:" $(python -V)
           safety --version
           echo "requests==2.19.0" > requirements.txt
-          safety check --file requirements.txt --json > safety-output.json
+          safety check --file requirements.txt --json > safety-output.json || true
+          echo "=== safety-output.json ==="
+          cat safety-output.json
 
       - name: Convert Safety output to SARIF
         uses: ./
