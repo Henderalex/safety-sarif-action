@@ -32,6 +32,7 @@ jobs:
           set -eo pipefail
           echo "Python:" $(python -V)
           safety --version
+          echo "requests==2.19.0" > requirements.txt
           safety check --file requirements.txt --json > safety-output.json
 
       - name: Convert Safety output to SARIF
